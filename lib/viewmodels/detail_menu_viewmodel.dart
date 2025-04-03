@@ -1,17 +1,13 @@
 import 'package:get/get.dart';
 
 class FoodDetailViewModel extends GetxController {
-  var isFavorite = false.obs;
+  var quantity = 1.obs;
 
-  void toggleFavorite() {
-    isFavorite.value = !isFavorite.value;
+  void increaseQuantity() {
+    quantity++;
   }
 
-  void addToCart() {
-    Get.snackbar(
-      "Added to Cart",
-      "Item has been added to your cart!",
-      snackPosition: SnackPosition.BOTTOM,
-    );
+  void decreaseQuantity() {
+    if (quantity > 1) quantity--;
   }
 }

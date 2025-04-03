@@ -41,7 +41,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.home,
-      page: () => const HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -66,7 +66,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.foodDetail,
-      page: () => FoodDetailView(),
+      page: () => FoodDetailView(foodItem: Get.arguments),
       binding: FoodDetailBinding(),
     ),
   ];

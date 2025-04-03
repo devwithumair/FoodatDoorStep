@@ -1,47 +1,27 @@
-import 'package:flutter/material.dart';
-import 'package:footatdoorstep/views/cart_screen.dart';
-import 'package:footatdoorstep/views/home_screen.dart';
-import 'package:footatdoorstep/views/profile_screen.dart';
+import 'package:footatdoorstep/models/category_model.dart';
+import 'package:footatdoorstep/models/fooditems_model.dart';
 import 'package:get/get.dart';
 
 class HomeViewModel extends GetxController {
-  var currentIndex = 0.obs;
+  var categories =
+      <Category>[
+        Category(name: 'Burger', image: 'assets/images/burger.jpg'),
+        Category(name: 'Pizza', image: 'assets/images/pizza.jpg'),
+      ].obs;
 
-  final List<Widget> screens = [
-    const HomeView(),
-    const ProfileView(),
-    const CartView(),
-  ];
-
-  final List<Map<String, dynamic>> foodItems = [
-    {
-      'name': 'Chicken Burger',
-      'price': '12.99',
-      'image': 'assets/images/burger1.jpg',
-    },
-    {
-      'name': 'Cheese Burger',
-      'price': '10.50',
-      'image': 'assets/images/burger2.jpg',
-    },
-  ];
-
-  void changeTab(int index) {
-    currentIndex.value = index;
-  }
-
-  void navigateToFoodDetail(Map<String, dynamic> foodItem) {
-    Get.toNamed(
-      '/foodDetail',
-      arguments: {
-        'name': foodItem['name'],
-        'price': foodItem['price'],
-        'imagePath': foodItem['image'],
-      },
-    );
-  }
-
-  void changeTabIndex(int index) {
-    currentIndex.value = index;
-  }
+  var foodItems =
+      <FoodItem>[
+        FoodItem(
+          name: 'Chicken Burger',
+          price: '\$2.00',
+          rating: 3.8,
+          image: 'assets/images/burger1.jpg',
+        ),
+        FoodItem(
+          name: 'Cheese Burger',
+          price: '\$1.50',
+          rating: 4.5,
+          image: 'assets/images/burger1.jpg',
+        ),
+      ].obs;
 }
