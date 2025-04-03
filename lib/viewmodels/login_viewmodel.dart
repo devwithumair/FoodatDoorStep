@@ -7,6 +7,8 @@ class LoginViewModel extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
 
+  var message = ''.obs; // Reactive message variable
+
   Future<void> login() async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -19,33 +21,20 @@ class LoginViewModel extends GetxController {
       passController.clear();
 
       // Navigate to HomeView
-      Get.offAll(() => const HomeView());
+      Get.offAll(() => HomeView());
 
       // Success message
-      Get.snackbar(
-        'Success',
-        'Logged in successfully!',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green,
-        colorText: Colors.white,
-      );
+      message.value = 'Logged in successfully!'; // Update message
     } on FirebaseAuthException catch (e) {
-      String message = 'An error occurred';
-
+      String msg = 'An error occurred';
       if (e.code == 'user-not-found') {
-        message = 'No user found for that email.';
+        msg = 'No user found for that email.';
       } else if (e.code == 'wrong-password') {
-        message = 'Wrong password provided.';
+        msg = 'Wrong password provided.';
       }
 
       // Show error message
-      Get.snackbar(
-        'Login Failed',
-        message,
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
+      message.value = msg; // Update message on error
     }
   }
 }

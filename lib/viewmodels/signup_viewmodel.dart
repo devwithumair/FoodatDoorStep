@@ -1,52 +1,34 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignupViewModel extends GetxController {
-  var emailController = ''.obs;
-  var passController = ''.obs;
-  var nameController = ''.obs;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  var message = ''.obs; // Reactive message variable
 
-  Future<void> registerUser() async {
+  Future<void> signup() async {
     try {
-      await _auth.createUserWithEmailAndPassword(
-        email: emailController.value.trim(),
-        password: passController.value.trim(),
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passController.text.trim(),
       );
 
       // Clear input fields
-      emailController.value = '';
-      passController.value = '';
-      nameController.value = '';
+      emailController.clear();
+      passController.clear();
 
-      // Show success message
-      Get.snackbar(
-        'Success',
-        'User Successfully Registered',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Get.theme.primaryColor,
-        colorText: Get.theme.colorScheme.onPrimary,
-      );
-
-      // Navigate to login
-      Get.offAllNamed('/login');
+      // Success message
+      message.value = 'Account created successfully!'; // Update message
     } on FirebaseAuthException catch (e) {
-      String message = 'An error occurred';
-
-      if (e.code == 'weak-password') {
-        message = 'The password provided is too weak.';
-      } else if (e.code == 'email-already-in-use') {
-        message = 'The account already exists for that email.';
+      String msg = 'An error occurred';
+      if (e.code == 'email-already-in-use') {
+        msg = 'The email address is already in use by another account.';
       }
 
-      Get.snackbar(
-        'Error',
-        message,
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Get.theme.colorScheme.error,
-        colorText: Get.theme.colorScheme.onError,
-      );
+      // Show error message
+      message.value = msg; // Update message on error
     }
   }
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:footatdoorstep/viewmodels/signup_viewmodel.dart';
+import 'package:footatdoorstep/views/login_screen.dart';
 import 'package:get/get.dart';
 
 class SignupView extends StatelessWidget {
-  final SignupViewModel controller = Get.put(SignupViewModel());
-
   SignupView({super.key});
+
+  final SignupViewModel viewModel = Get.put(SignupViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class SignupView extends StatelessWidget {
             const SizedBox(height: 40),
             Image.asset('assets/images/onboarding.jpg', height: 200),
             const SizedBox(height: 20),
-            Padding(
+            Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(
                 children: [
@@ -25,9 +26,16 @@ class SignupView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: () => Get.toNamed('/signup'),
+                        onPressed: () {},
                         child: const Text(
                           'Create Account',
+                          style: TextStyle(fontSize: 18, color: Colors.black54),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () => Get.to(() => LoginView()),
+                        child: const Text(
+                          'Login',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -35,28 +43,11 @@ class SignupView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () => Get.toNamed('/login'),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(fontSize: 18, color: Colors.black54),
-                        ),
-                      ),
                     ],
                   ),
                   const SizedBox(height: 20),
                   TextField(
-                    onChanged:
-                        (value) => controller.nameController.value = value,
-                    decoration: const InputDecoration(
-                      labelText: 'Full Name',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  TextField(
-                    onChanged:
-                        (value) => controller.emailController.value = value,
+                    controller: viewModel.emailController,
                     decoration: const InputDecoration(
                       labelText: 'Email address',
                       border: OutlineInputBorder(),
@@ -64,8 +55,7 @@ class SignupView extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   TextField(
-                    onChanged:
-                        (value) => controller.passController.value = value,
+                    controller: viewModel.passController,
                     obscureText: true,
                     decoration: const InputDecoration(
                       labelText: 'Password',
@@ -74,7 +64,7 @@ class SignupView extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: controller.registerUser,
+                    onPressed: viewModel.signup,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.pink,
                       minimumSize: const Size(double.infinity, 50),
@@ -85,6 +75,27 @@ class SignupView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
+
+                  // Display message here (if any)
+                  Obx(() {
+                    if (viewModel.message.value.isNotEmpty) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          viewModel.message.value,
+                          style: TextStyle(
+                            color:
+                                viewModel.message.value.contains('success')
+                                    ? Colors.green
+                                    : Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      );
+                    }
+                    return Container(); // Empty container if no message
+                  }),
                 ],
               ),
             ),
