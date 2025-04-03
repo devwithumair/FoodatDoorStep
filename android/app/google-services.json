@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "215579603259",
+    "project_id": "footatdoorstep",
+    "storage_bucket": "footatdoorstep.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215579603259:android:3974005f19e9381bb0871e",
+        "android_client_info": {
+          "package_name": "com.example.foodatdoorstep"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4NxwI0nMNIvGjkGLtdeY8duzPyOVDoIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215579603259:android:52471ccdb65b7badb0871e",
+        "android_client_info": {
+          "package_name": "com.example.footatdoorstep"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4NxwI0nMNIvGjkGLtdeY8duzPyOVDoIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
