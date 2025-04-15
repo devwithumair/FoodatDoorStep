@@ -24,7 +24,7 @@ class LoginViewModel extends GetxController {
       Get.offAll(() => HomeView());
 
       // Success message
-      message.value = 'Logged in successfully!'; // Update message
+      message.value = 'Logged in successfull!'; // Update message
     } on FirebaseAuthException catch (e) {
       String msg = 'An error occurred';
       if (e.code == 'user-not-found') {
