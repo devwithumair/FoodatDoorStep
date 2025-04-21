@@ -1,9 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:footatdoorstep/bindings/main_binding.dart';
 import 'package:footatdoorstep/firebase_options.dart';
 import 'package:footatdoorstep/routes/app_pages.dart';
 import 'package:footatdoorstep/routes/app_routes.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,8 +18,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: 'ECommerce Food App',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.splash,
+      initialBinding: MainBinding(),
+      initialRoute: AppRoutes.home,
+      // initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
     );
   }

@@ -1,0 +1,9 @@
+import 'package:footatdoorstep/viewmodels/navbar_viewmodel.dart';
+import 'package:get/get.dart';
+
+class MainBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => NavController());
+  }
+}
