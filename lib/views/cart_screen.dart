@@ -1,122 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:footatdoorstep/models/cart_model.dart';
-import 'package:footatdoorstep/viewmodels/cart_viewmodel.dart';
 import 'package:get/get.dart';
+import '../viewmodels/cart_viewmodel.dart';
 
-class CartView extends GetView<CartViewModel> {
+class CartView extends StatelessWidget {
   const CartView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<CartViewModel>();
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const Row(
-              children: [
-                SizedBox(width: 10),
-                Text(
-                  "Order details",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            Expanded(
-              child: Obx(
-                () => ListView.builder(
-                  itemCount: controller.cartItems.length,
-                  itemBuilder: (context, index) {
-                    final CartItem item = controller.cartItems[index];
-                    return Card(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      child: ListTile(
-                        leading: Image.asset(
-                          item.image,
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                        title: Text(item.name),
-                        subtitle: Text(item.restaurant),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.remove),
-                              onPressed:
-                                  () => controller.decrementQuantity(index),
-                            ),
-                            Text("${item.quantity}"),
-                            IconButton(
-                              icon: const Icon(Icons.add),
-                              onPressed:
-                                  () => controller.incrementQuantity(index),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-            Card(
-              color: Colors.red[100],
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
+      appBar: AppBar(
+        title: const Text('My Cart'),
+        backgroundColor: Colors.purple,
+        foregroundColor: Colors.white,
+      ),
+      body: Obx(
+        () =>
+            controller.cartItems.isEmpty
+                ? const Center(child: Text('Your cart is empty'))
+                : ListView(
+                  padding: const EdgeInsets.all(16),
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text("Sub-Total"),
-                        Obx(() => Text("${controller.total} \$")),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("Delivery Charge"), Text("10 \$")],
-                    ),
-                    const Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "Total",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Obx(
-                          () => Text(
-                            "${controller.total + 10} \$",
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                    ...controller.cartItems.map((item) {
+                      return Card(
+                        margin: const EdgeInsets.only(bottom: 12),
+                        child: ListTile(
+                          leading: Image.asset(item.image, width: 50),
+                          title: Text(item.name),
+                          subtitle: Text(
+                            'Price: \$${item.price.toStringAsFixed(2)}',
+                          ),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.remove),
+                                onPressed:
+                                    () => controller.decreaseQuantity(item.id),
+                              ),
+                              Text(item.quantity.toString()),
+                              IconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed:
+                                    () => controller.increaseQuantity(item.id),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                        ),
-                        onPressed: () {
-                          Get.toNamed('/location');
-                        },
-                        child: const Text(
-                          "Place My Order",
-                          style: TextStyle(color: Colors.white),
-                        ),
+                      );
+                    }).toList(),
+                    const Divider(),
+                    Text(
+                      'Total: \$${controller.totalPrice.toStringAsFixed(2)}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.end,
                     ),
                   ],
                 ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

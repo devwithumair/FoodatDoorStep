@@ -6,8 +6,4 @@ class AppRoutes {
   static const String home = '/home';
   static const String profile = '/profile';
   static const String cart = '/cart';
-  static const String chat = '/chat';
-  static const String location = '/location';
-  static const String orderCompleted = '/orderCompleted';
-  static const String foodDetail = '/foodDetail';
 }

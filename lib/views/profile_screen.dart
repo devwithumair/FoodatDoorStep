@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:footatdoorstep/viewmodels/profile_viewmodel.dart';
-import 'package:get/get.dart';
+// import 'package:footatdoorstep/viewmodels/profile_viewmodel.dart';
+// import 'package:get/get.dart';
 
-class ProfileView extends GetView<ProfileViewModel> {
+class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text(
+          'My Profile',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.purple,
+        foregroundColor: Colors.white,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -24,7 +36,7 @@ class ProfileView extends GetView<ProfileViewModel> {
                       radius: 50,
                       backgroundColor: Colors.pink[100],
                       backgroundImage: const AssetImage(
-                        "assets/images/logo.png", // Dummy Image
+                        "assets/images/logo.png",
                       ),
                     ),
                     Container(
@@ -50,7 +62,6 @@ class ProfileView extends GetView<ProfileViewModel> {
                   "Occupation": "Flutter Developer",
                   "Pakistan": "",
                 },
-                hasSwitch: true,
               ),
               const SizedBox(height: 20),
               const SectionTitle(title: "Contact Info"),
@@ -59,7 +70,6 @@ class ProfileView extends GetView<ProfileViewModel> {
                   "Phone number": "+92 311 0231429",
                   "Email": "tumair139@gmail.com",
                 },
-                hasSwitch: false,
               ),
               const SizedBox(height: 20),
               SizedBox(
@@ -72,7 +82,7 @@ class ProfileView extends GetView<ProfileViewModel> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () {}, // Add edit functionality
+                  onPressed: () {},
                   child: const Text(
                     "Edit",
                     style: TextStyle(fontSize: 18, color: Colors.white),
@@ -102,17 +112,10 @@ class SectionTitle extends StatelessWidget {
 
 class ProfileInfoCard extends StatelessWidget {
   final Map<String, String> data;
-  final bool hasSwitch;
-  const ProfileInfoCard({
-    super.key,
-    required this.data,
-    this.hasSwitch = false,
-  });
+  const ProfileInfoCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
-    final ProfileViewModel controller = Get.find<ProfileViewModel>();
-
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(15),
@@ -146,15 +149,6 @@ class ProfileInfoCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    else if (hasSwitch)
-                      Obx(
-                        () => Switch(
-                          value: controller.switchValue.value,
-                          onChanged: controller.toggleSwitch,
-                          activeColor: Colors.red,
-                          inactiveTrackColor: Colors.grey[400],
                         ),
                       ),
                   ],

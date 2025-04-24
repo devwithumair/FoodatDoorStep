@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'ECommerce Food App',
       debugShowCheckedModeBanner: false,
       initialBinding: MainBinding(),
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.profile,
       // initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
     );

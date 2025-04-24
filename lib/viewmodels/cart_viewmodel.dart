@@ -1,47 +1,38 @@
-import 'package:footatdoorstep/models/cart_model.dart';
+import 'package:footatdoorstep/models/cart_items.dart';
 import 'package:get/get.dart';
 
 class CartViewModel extends GetxController {
-  var cartItems =
-      <CartItem>[
-        CartItem(
-          name: "Pizza Spicy",
-          restaurant: "Burger Factory LTD",
-          price: 20,
-          image: "assets/images/pizza.jpg",
-          quantity: 1,
-        ),
-        CartItem(
-          name: "Pizza Spicy",
-          restaurant: "Burger Factory LTD",
-          price: 20,
-          image: "assets/images/pizza.jpg",
-          quantity: 1,
-        ),
-        CartItem(
-          name: "Pizza Spicy",
-          restaurant: "Burger Factory LTD",
-          price: 20,
-          image: "assets/images/pizza.jpg",
-          quantity: 1,
-        ),
-      ].obs;
+  var cartItems = <CartItemModel>[].obs;
 
-  // Get total price
-  double get total =>
-      cartItems.fold(0, (sum, item) => sum + (item.price * item.quantity));
-
-  // Increment item quantity
-  void incrementQuantity(int index) {
-    cartItems[index].quantity++;
-    cartItems.refresh();
-  }
-
-  // Decrement item quantity
-  void decrementQuantity(int index) {
-    if (cartItems[index].quantity > 1) {
-      cartItems[index].quantity--;
-      cartItems.refresh();
+  void addToCart(CartItemModel newItem) {
+    final index = cartItems.indexWhere((item) => item.id == newItem.id);
+    if (index != -1) {
+      cartItems[index].quantity++;
+    } else {
+      cartItems.add(newItem);
     }
   }
+
+  void removeFromCart(String id) {
+    cartItems.removeWhere((item) => item.id == id);
+  }
+
+  void increaseQuantity(String id) {
+    final index = cartItems.indexWhere((item) => item.id == id);
+    if (index != -1) {
+      cartItems[index].quantity++;
+    }
+  }
+
+  void decreaseQuantity(String id) {
+    final index = cartItems.indexWhere((item) => item.id == id);
+    if (index != -1 && cartItems[index].quantity > 1) {
+      cartItems[index].quantity--;
+    } else {
+      removeFromCart(id);
+    }
+  }
+
+  double get totalPrice =>
+      cartItems.fold(0, (sum, item) => sum + item.price * item.quantity);
 }

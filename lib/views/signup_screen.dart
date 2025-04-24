@@ -29,18 +29,18 @@ class SignupView extends StatelessWidget {
                         onPressed: () {},
                         child: const Text(
                           'Create Account',
-                          style: TextStyle(fontSize: 18, color: Colors.black54),
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                          ),
                         ),
                       ),
                       TextButton(
                         onPressed: () => Get.to(() => LoginView()),
                         child: const Text(
                           'Login',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black54,
-                          ),
+                          style: TextStyle(fontSize: 18, color: Colors.black54),
                         ),
                       ),
                     ],
@@ -77,25 +77,26 @@ class SignupView extends StatelessWidget {
                   const SizedBox(height: 10),
 
                   // Display message here (if any)
-                  Obx(() {
-                    if (viewModel.message.value.isNotEmpty) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          viewModel.message.value,
-                          style: TextStyle(
-                            color:
-                                viewModel.message.value.contains('success')
-                                    ? Colors.green
-                                    : Colors.red,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      );
-                    }
-                    return Container(); // Empty container if no message
-                  }),
+                  // Obx(() {
+                  //   if (viewModel.message.value.isNotEmpty) {
+                  //     return Padding(
+                  //       padding: const EdgeInsets.all(8.0),
+                  //       child: Text(
+                  //         viewModel.message.value,
+                  //         style: TextStyle(
+                  //           color:
+                  //               viewModel.message.value.contains('success')
+                  //                   ? Colors.green
+                  //                   : Colors.red,
+                  //           fontWeight: FontWeight.bold,
+                  //           fontSize: 16,
+                  //         ),
+                  //       ),
+                  //     );
+                  //   }
+                  //   return Container(); // Empty container if no message
+                  // }
+                  // ),
                 ],
               ),
             ),
