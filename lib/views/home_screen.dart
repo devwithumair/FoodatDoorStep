@@ -9,7 +9,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeViewModel()); // Ensures it's initialized
+    final controller = Get.put(HomeViewModel());
 
     return Scaffold(
       // bottomNavigationBar: BottomNavBar(),
@@ -57,8 +57,8 @@ class HomeView extends StatelessWidget {
                 items:
                     [
                       'assets/images/burger.jpg',
-                      'assets/images/burger.jpg',
-                      'assets/images/burger.jpg',
+                      'assets/images/slider2.jpg',
+                      'assets/images/slider3.jpg',
                     ].map((imgPath) {
                       return ClipRRect(
                         borderRadius: BorderRadius.circular(12),

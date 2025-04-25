@@ -11,27 +11,27 @@ class HomeViewModel extends GetxController {
   }
 
   void loadFoodItems() {
-    items.assignAll([ 
+    items.assignAll([
       FoodItem(
         id: '1',
         name: 'Chicken Burger',
-        image: 'assets/images/burger2.jpg',
+        image: 'assets/images/burger.jpg',
         price: 2.0,
         rating: 3.8,
         description: 'Tasty grilled chicken burger',
       ),
       FoodItem(
         id: '2',
-        name: 'Chicken Burger',
-        image: 'assets/images/burger2.jpg',
+        name: 'Chicken Sandwich',
+        image: 'assets/images/sandwitch.jpg',
         price: 2.0,
         rating: 3.8,
-        description: 'Tasty grilled chicken burger',
+        description: 'Tasty grilled chicken sandwich',
       ),
       FoodItem(
         id: '3',
-        name: 'Chicken Burger',
-        image: 'assets/images/burger2.jpg',
+        name: 'Chicken Sandwich',
+        image: 'assets/images/sandwitch.jpg',
         price: 2.0,
         rating: 3.8,
         description: 'Tasty grilled chicken burger',
@@ -39,7 +39,7 @@ class HomeViewModel extends GetxController {
       FoodItem(
         id: '4',
         name: 'Chicken Burger',
-        image: 'assets/images/burger2.jpg',
+        image: 'assets/images/burger.jpg',
         price: 2.0,
         rating: 3.8,
         description: 'Tasty grilled chicken burger',
@@ -47,23 +47,23 @@ class HomeViewModel extends GetxController {
       FoodItem(
         id: '5',
         name: 'Chicken Burger',
-        image: 'assets/images/burger2.jpg',
+        image: 'assets/images/burger.jpg',
         price: 2.0,
         rating: 3.8,
         description: 'Tasty grilled chicken burger',
       ),
       FoodItem(
         id: '6',
-        name: 'Chicken Burger',
-        image: 'assets/images/burger2.jpg',
+        name: 'Chicken Sandwich',
+        image: 'assets/images/sandwitch.jpg',
         price: 2.0,
         rating: 3.8,
-        description: 'Tasty grilled chicken burger',
+        description: 'Tasty grilled chicken sandwich',
       ),
       FoodItem(
         id: '7',
-        name: 'Chicken Burger',
-        image: 'assets/images/burger2.jpg',
+        name: 'Chicken Sandwich',
+        image: 'assets/images/sandwitch.jpg',
         price: 2.0,
         rating: 3.8,
         description: 'Tasty grilled chicken burger',
@@ -71,7 +71,7 @@ class HomeViewModel extends GetxController {
       FoodItem(
         id: '8',
         name: 'Chicken Burger',
-        image: 'assets/images/burger2.jpg',
+        image: 'assets/images/burger.jpg',
         price: 2.0,
         rating: 3.8,
         description: 'Tasty grilled chicken burger',
@@ -88,11 +88,11 @@ class HomeViewModel extends GetxController {
       ),
       FoodItem(
         id: '10',
-        name: 'Papparoni Pizza',
-        image: 'assets/images/pizza.jpg',
+        name: 'Cake',
+        image: 'assets/images/cake.jpg',
         price: 15.0,
         rating: 4.7,
-        description: '5kg box of Pizza',
+        description: '5kg box of cake',
       ),
       FoodItem(
         id: '11',
@@ -104,11 +104,11 @@ class HomeViewModel extends GetxController {
       ),
       FoodItem(
         id: '12',
-        name: 'Papparoni Pizza',
-        image: 'assets/images/pizza.jpg',
+        name: 'Cake',
+        image: 'assets/images/Cake.jpg',
         price: 15.0,
         rating: 4.7,
-        description: '5kg box of Pizza',
+        description: '5kg box of cake',
       ),
       FoodItem(
         id: '13',

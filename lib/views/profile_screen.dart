@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:footatdoorstep/viewmodels/profile_viewmodel.dart';
-// import 'package:get/get.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -32,12 +30,9 @@ class ProfileView extends StatelessWidget {
                 child: Stack(
                   alignment: Alignment.bottomRight,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 50,
-                      backgroundColor: Colors.pink[100],
-                      backgroundImage: const AssetImage(
-                        "assets/images/logo.png",
-                      ),
+                      backgroundImage: AssetImage("assets/images/logo.png"),
                     ),
                     Container(
                       padding: const EdgeInsets.all(5),
@@ -55,23 +50,26 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              const SectionTitle(title: "Personal Info"),
-              ProfileInfoCard(
-                data: {
-                  "Your name": "Muhammad Umair Tariq",
-                  "Occupation": "Flutter Developer",
-                  "Pakistan": "",
-                },
+
+              const Text(
+                "Personal Info",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+              const SizedBox(height: 10),
+              infoRow("Your name", "Muhammad Umair Tariq"),
+              infoRow("Occupation", "Flutter Developer"),
+              infoRow("Country", "Pakistan"),
+
               const SizedBox(height: 20),
-              const SectionTitle(title: "Contact Info"),
-              ProfileInfoCard(
-                data: {
-                  "Phone number": "+92 311 0231429",
-                  "Email": "tumair139@gmail.com",
-                },
+              const Text(
+                "Contact Info",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
+              infoRow("Phone number", "+92 311 0231429"),
+              infoRow("Email", "tumair139@gmail.com"),
+
+              const SizedBox(height: 30),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -95,66 +93,19 @@ class ProfileView extends StatelessWidget {
       ),
     );
   }
-}
 
-class SectionTitle extends StatelessWidget {
-  final String title;
-  const SectionTitle({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    );
-  }
-}
-
-class ProfileInfoCard extends StatelessWidget {
-  final Map<String, String> data;
-  const ProfileInfoCard({super.key, required this.data});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withAlpha((0.1 * 255).toInt()),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: const Offset(0, 2),
+  Widget infoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(label, style: const TextStyle(color: Colors.grey, fontSize: 16)),
+          Text(
+            value,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
         ],
-      ),
-      child: Column(
-        children:
-            data.entries.map((entry) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      entry.key,
-                      style: TextStyle(color: Colors.grey[600], fontSize: 16),
-                    ),
-                    if (entry.value.isNotEmpty)
-                      Text(
-                        entry.value,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                  ],
-                ),
-              );
-            }).toList(),
       ),
     );
   }
