@@ -1,6 +1,7 @@
+import 'package:footatdoorstep/bindings/bottomnav_bindings.dart';
 import 'package:footatdoorstep/bindings/cart_bindings.dart';
-import 'package:footatdoorstep/bindings/profile_bindings.dart';
 import 'package:footatdoorstep/routes/app_routes.dart';
+import 'package:footatdoorstep/views/bottom_nav_screen.dart';
 import 'package:footatdoorstep/views/cart_screen.dart';
 import 'package:footatdoorstep/views/profile_screen.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -34,15 +35,16 @@ class AppPages {
       binding: SignupBinding(),
     ),
     GetPage(
+      name: AppRoutes.bottomNav,
+      page: () => BottomNavScreen(),
+      binding: BottomNavBinding(),
+    ),
+    GetPage(
       name: AppRoutes.home,
       page: () => HomeView(),
       binding: HomeBinding(),
     ),
-    GetPage(
-      name: AppRoutes.profile,
-      page: () => ProfileView(),
-      binding: ProfileBindings(),
-    ),
+    GetPage(name: AppRoutes.profile, page: () => ProfileView()),
     GetPage(
       name: AppRoutes.cart,
       page: () => CartView(),

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class OnBoarding extends StatelessWidget {
   OnBoarding({super.key});
 
-  final OnBoardingViewModel controller = Get.put(OnBoardingViewModel());
+  final OnBoardingViewModel controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

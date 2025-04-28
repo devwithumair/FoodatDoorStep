@@ -1,3 +1,48 @@
+//               const SizedBox(height: 30),
+
+//               const Text(
+//                 "Personal Info",
+//                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+//               ),
+//               const SizedBox(height: 10),
+//               infoRow("Your name", "Muhammad Umair Tariq"),
+//               infoRow("Occupation", "Flutter Developer"),
+//               infoRow("Country", "Pakistan"),
+
+//               const SizedBox(height: 20),
+//               const Text(
+//                 "Contact Info",
+//                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+//               ),
+//               const SizedBox(height: 10),
+//               infoRow("Phone number", "+92 311 0231429"),
+//               infoRow("Email", "tumair139@gmail.com"),
+
+//               const SizedBox(height: 30),
+//               SizedBox(
+//                 width: double.infinity,
+//                 child: ElevatedButton(
+//                   style: ElevatedButton.styleFrom(
+//                     backgroundColor: Colors.pink,
+//                     padding: const EdgeInsets.symmetric(vertical: 15),
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(10),
+//                     ),
+//                   ),
+//                   onPressed: () {},
+//                   child: const Text(
+//                     "Edit",
+//                     style: TextStyle(fontSize: 18, color: Colors.white),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {
@@ -16,6 +61,9 @@ class ProfileView extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        actions: const [
+          CircleAvatar(backgroundImage: AssetImage('assets/images/logo.png')),
+        ],
         backgroundColor: Colors.purple,
         foregroundColor: Colors.white,
       ),
@@ -23,7 +71,6 @@ class ProfileView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
               Center(
@@ -32,7 +79,7 @@ class ProfileView extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage("assets/images/logo.png"),
+                      backgroundImage: AssetImage("assets/images/profileicon.png"),
                     ),
                     Container(
                       padding: const EdgeInsets.all(5),
@@ -51,23 +98,49 @@ class ProfileView extends StatelessWidget {
               ),
               const SizedBox(height: 30),
 
-              const Text(
-                "Personal Info",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              infoRow("Your name", "Muhammad Umair Tariq"),
-              infoRow("Occupation", "Flutter Developer"),
-              infoRow("Country", "Pakistan"),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF7F5FA),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.08),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Personal Info",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    infoRow("Your name", "Muhammad Umair Tariq"),
+                    infoRow("Occupation", "Flutter Developer"),
+                    infoRow("Country", "Pakistan"),
 
-              const SizedBox(height: 20),
-              const Text(
-                "Contact Info",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Contact Info",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    infoRow("Phone number", "+92 311 0231429"),
+                    infoRow("Email", "tumair139@gmail.com"),
+                  ],
+                ),
               ),
-              const SizedBox(height: 10),
-              infoRow("Phone number", "+92 311 0231429"),
-              infoRow("Email", "tumair139@gmail.com"),
 
               const SizedBox(height: 30),
               SizedBox(
@@ -96,14 +169,21 @@ class ProfileView extends StatelessWidget {
 
   Widget infoRow(String label, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: const TextStyle(color: Colors.grey, fontSize: 16)),
+          Text(
+            label,
+            style: const TextStyle(
+              color: Colors.grey,
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
           Text(
             value,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
           ),
         ],
       ),

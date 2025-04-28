@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:footatdoorstep/views/home_screen.dart';
+import 'package:footatdoorstep/views/bottom_nav_screen.dart';
 import 'package:get/get.dart';
 
 class LoginViewModel extends GetxController {
@@ -21,7 +21,7 @@ class LoginViewModel extends GetxController {
       passController.clear();
 
       // Navigate to HomeView
-      Get.offAll(() => HomeView());
+      Get.offAll(() => BottomNavScreen());
 
       // Success message
       message.value = 'Logged in successfull!'; // Update message

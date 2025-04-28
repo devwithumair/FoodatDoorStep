@@ -7,10 +7,22 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<CartViewModel>();
+    final CartViewModel controller = Get.put(CartViewModel());
+
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('My Cart'),
+        title: const Text(
+          'My Cart',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        actions: const [
+          CircleAvatar(backgroundImage: AssetImage('assets/images/logo.png')),
+        ],
         backgroundColor: Colors.purple,
         foregroundColor: Colors.white,
       ),

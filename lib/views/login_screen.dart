@@ -33,7 +33,7 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => LoginView()),
                         child: const Text(
                           'Login',
                           style: TextStyle(
@@ -45,7 +45,7 @@ class LoginView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   TextField(
                     controller: viewModel.emailController,
                     decoration: const InputDecoration(
@@ -76,26 +76,25 @@ class LoginView extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
 
-                  // Display message here (if any)
-                  Obx(() {
-                    if (viewModel.message.value.isNotEmpty) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          viewModel.message.value,
-                          style: TextStyle(
-                            color:
-                                viewModel.message.value.contains('success')
-                                    ? Colors.green
-                                    : Colors.red,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      );
-                    }
-                    return Container(); // Empty container if no message
-                  }),
+                  // Obx(() {
+                  //   if (viewModel.message.value.isNotEmpty) {
+                  //     return Padding(
+                  //       padding: const EdgeInsets.all(8.0),
+                  //       child: Text(
+                  //         viewModel.message.value,
+                  //         style: TextStyle(
+                  //           color:
+                  //               viewModel.message.value.contains('success')
+                  //                   ? Colors.green
+                  //                   : Colors.red,
+                  //           fontWeight: FontWeight.bold,
+                  //           fontSize: 16,
+                  //         ),
+                  //       ),
+                  //     );
+                  //   }
+                  //   return Container(); // Empty container if no message
+                  // }),
                 ],
               ),
             ),

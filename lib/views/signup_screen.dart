@@ -26,7 +26,7 @@ class SignupView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => SignupView()),
                         child: const Text(
                           'Create Account',
                           style: TextStyle(

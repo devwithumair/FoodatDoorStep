@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:footatdoorstep/bindings/main_binding.dart';
 import 'package:footatdoorstep/firebase_options.dart';
 import 'package:footatdoorstep/routes/app_pages.dart';
 import 'package:footatdoorstep/routes/app_routes.dart';
@@ -20,8 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'ECommerce Food App',
       debugShowCheckedModeBanner: false,
-      initialBinding: MainBinding(),
-      initialRoute: AppRoutes.profile,
+      initialRoute: AppRoutes.bottomNav,
       // initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
     );
