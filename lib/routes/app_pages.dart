@@ -1,8 +1,10 @@
 import 'package:footatdoorstep/bindings/bottomnav_bindings.dart';
 import 'package:footatdoorstep/bindings/cart_bindings.dart';
+import 'package:footatdoorstep/bindings/ordercompleted_bindings.dart';
 import 'package:footatdoorstep/routes/app_routes.dart';
 import 'package:footatdoorstep/views/bottom_nav_screen.dart';
 import 'package:footatdoorstep/views/cart_screen.dart';
+import 'package:footatdoorstep/views/order_completed_screen.dart';
 import 'package:footatdoorstep/views/profile_screen.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -49,6 +51,11 @@ class AppPages {
       name: AppRoutes.cart,
       page: () => CartView(),
       binding: CartBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.cart,
+      page: () => OrderCompletedView(),
+      binding: OrderCompletedBinding(),
     ),
   ];
 }
