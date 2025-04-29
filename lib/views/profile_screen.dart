@@ -1,48 +1,3 @@
-//               const SizedBox(height: 30),
-
-//               const Text(
-//                 "Personal Info",
-//                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-//               ),
-//               const SizedBox(height: 10),
-//               infoRow("Your name", "Muhammad Umair Tariq"),
-//               infoRow("Occupation", "Flutter Developer"),
-//               infoRow("Country", "Pakistan"),
-
-//               const SizedBox(height: 20),
-//               const Text(
-//                 "Contact Info",
-//                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-//               ),
-//               const SizedBox(height: 10),
-//               infoRow("Phone number", "+92 311 0231429"),
-//               infoRow("Email", "tumair139@gmail.com"),
-
-//               const SizedBox(height: 30),
-//               SizedBox(
-//                 width: double.infinity,
-//                 child: ElevatedButton(
-//                   style: ElevatedButton.styleFrom(
-//                     backgroundColor: Colors.pink,
-//                     padding: const EdgeInsets.symmetric(vertical: 15),
-//                     shape: RoundedRectangleBorder(
-//                       borderRadius: BorderRadius.circular(10),
-//                     ),
-//                   ),
-//                   onPressed: () {},
-//                   child: const Text(
-//                     "Edit",
-//                     style: TextStyle(fontSize: 18, color: Colors.white),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {
@@ -79,7 +34,9 @@ class ProfileView extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage("assets/images/profileicon.png"),
+                      backgroundImage: AssetImage(
+                        "assets/images/profileicon.png",
+                      ),
                     ),
                     Container(
                       padding: const EdgeInsets.all(5),
@@ -143,20 +100,22 @@ class ProfileView extends StatelessWidget {
               ),
 
               const SizedBox(height: 30),
+
+              // Edit Button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    backgroundColor: const Color.fromARGB(255, 184, 163, 219),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  onPressed: () {},
                   child: const Text(
-                    "Edit",
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    'Edit',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

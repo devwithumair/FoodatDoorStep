@@ -11,25 +11,31 @@ class CartViewModel extends GetxController {
     } else {
       cartItems.add(newItem);
     }
+    cartItems.refresh(); // Ensure UI updates
   }
 
   void removeFromCart(String id) {
     cartItems.removeWhere((item) => item.id == id);
+    cartItems.refresh();
   }
 
   void increaseQuantity(String id) {
     final index = cartItems.indexWhere((item) => item.id == id);
     if (index != -1) {
       cartItems[index].quantity++;
+      cartItems.refresh();
     }
   }
 
   void decreaseQuantity(String id) {
     final index = cartItems.indexWhere((item) => item.id == id);
-    if (index != -1 && cartItems[index].quantity > 1) {
-      cartItems[index].quantity--;
-    } else {
-      removeFromCart(id);
+    if (index != -1) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity--;
+      } else {
+        removeFromCart(id);
+      }
+      cartItems.refresh();
     }
   }
 

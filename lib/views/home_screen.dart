@@ -116,7 +116,19 @@ class HomeView extends StatelessWidget {
                                     padding: const EdgeInsets.all(10),
                                     child: Column(
                                       children: [
-                                        Image.asset(item.image, width: 60),
+                                        SizedBox(
+                                          height: 100,
+                                          width: 100,
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                              8,
+                                            ),
+                                            child: Image.asset(
+                                              item.image,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
                                         const SizedBox(height: 10),
                                         Text(
                                           item.name,
