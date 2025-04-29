@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:footatdoorstep/firebase_options.dart';
 import 'package:footatdoorstep/routes/app_pages.dart';
 import 'package:footatdoorstep/routes/app_routes.dart';
+import 'package:footatdoorstep/views/fooddetail_screen.dart';
 import 'package:get/get.dart';
 
 void main() async {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'ECommerce Food App',
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.bottomNav,
+      scaffoldMessengerKey: snackbarKey,
       // initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
     );
