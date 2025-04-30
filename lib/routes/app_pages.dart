@@ -53,7 +53,7 @@ class AppPages {
       binding: CartBinding(),
     ),
     GetPage(
-      name: AppRoutes.cart,
+      name: AppRoutes.ordercompleted,
       page: () => OrderCompletedView(),
       binding: OrderCompletedBinding(),
     ),
