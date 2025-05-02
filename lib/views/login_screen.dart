@@ -79,7 +79,7 @@ class LoginView extends StatelessWidget {
                   // Obx(() {
                   //   if (viewModel.message.value.isNotEmpty) {
                   //     return Padding(
-                  //       padding: const EdgeInsets.all(8.0),
+                  //       padding: const EdgeInsets.all(8.0), 
                   //       child: Text(
                   //         viewModel.message.value,
                   //         style: TextStyle(
