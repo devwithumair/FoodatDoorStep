@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'ECommerce Food App',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.bottomNav,
+      // initialRoute: AppRoutes.login,
       scaffoldMessengerKey: snackbarKey,
-      // initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
     );
   }

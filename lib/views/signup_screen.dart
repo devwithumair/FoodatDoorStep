@@ -95,8 +95,7 @@ class SignupView extends StatelessWidget {
                   //     );
                   //   }
                   //   return Container(); // Empty container if no message
-                  // }
-                  // ),
+                  // }),
                 ],
               ),
             ),
