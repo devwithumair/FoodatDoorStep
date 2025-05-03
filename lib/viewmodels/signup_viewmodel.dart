@@ -6,7 +6,7 @@ class SignupViewModel extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
 
-  var message = ''.obs; // Reactive message variable
+  // var message = ''.obs; // Reactive message variable
 
   Future<void> signup() async {
     try {
@@ -19,16 +19,26 @@ class SignupViewModel extends GetxController {
       emailController.clear();
       passController.clear();
 
-      // Success message
-      message.value = 'Account created successfully!'; // Update message
+      /// Optionally show success snackbar
+      Get.snackbar(
+        'Success',
+        'Account created successfully!',
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
     } on FirebaseAuthException catch (e) {
       String msg = 'An error occurred';
       if (e.code == 'email-already-in-use') {
         msg = 'The email address is already in use by another account.';
       }
 
-      // Show error message
-      message.value = msg; // Update message on error
+      // Show error snackbar
+      Get.snackbar(
+        'Signup Failed',
+        msg,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
   }
 }
