@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:footatdoorstep/viewmodels/signup_viewmodel.dart';
 import 'package:footatdoorstep/views/login_screen.dart';
@@ -7,6 +9,8 @@ class SignupView extends StatelessWidget {
   SignupView({super.key});
 
   final SignupViewModel viewModel = Get.put(SignupViewModel());
+  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+      GlobalKey<ScaffoldMessengerState>();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +68,41 @@ class SignupView extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: viewModel.signup,
+                    // onPressed: viewModel.signup,
+                    // onPressed: () async {
+                    //   final error = await viewModel.signup();
+                    //   if (error != null) {
+                    //     scaffoldMessengerKey.currentState?.showSnackBar(
+                    //       SnackBar(
+                    //         content: Text(error),
+                    //         backgroundColor: Colors.red,
+                    //       ),
+                    //     );
+                    //   } else {
+                    //     scaffoldMessengerKey.currentState?.showSnackBar(
+                    //       const SnackBar(
+                    //         content: Text('Signup successful!'),
+                    //         backgroundColor: Colors.green,
+                    //       ),
+                    //     );
+
+                    //     // Allow user to see success message briefly
+                    //     await Future.delayed(const Duration(seconds: 1));
+                    //     Get.offAll(() => LoginView());
+                    //   }
+                    // },
+                    onPressed: () async {
+                      bool success = await viewModel.signup();
+                      if (success) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text("Signup successful"),
+                            backgroundColor: Colors.green,
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.pink,
                       minimumSize: const Size(double.infinity, 50),

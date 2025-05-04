@@ -75,6 +75,7 @@ class OrderCompletedView extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text("Feedback submitted!"),
+                              backgroundColor: Colors.green,
                               duration: Duration(seconds: 2),
                             ),
                           );

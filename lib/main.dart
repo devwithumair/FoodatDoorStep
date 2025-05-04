@@ -14,7 +14,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  // Define one global key for ScaffoldMessengerState
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>();
 
@@ -23,9 +22,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'ECommerce Food App',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.login,
-      scaffoldMessengerKey: scaffoldMessengerKey, // Set it here globally
-      // initialRoute: AppRoutes.splash,
+      // initialRoute: AppRoutes.bottomNav,
+      scaffoldMessengerKey: scaffoldMessengerKey,
+      initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
     );
   }

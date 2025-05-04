@@ -4,9 +4,6 @@ import 'package:footatdoorstep/models/food_items.dart';
 import 'package:footatdoorstep/viewmodels/cart_viewmodel.dart';
 import 'package:get/get.dart';
 
-final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
-    GlobalKey<ScaffoldMessengerState>();
-
 class FoodDetailView extends StatelessWidget {
   final FoodItem item;
 
@@ -122,10 +119,10 @@ class FoodDetailView extends StatelessWidget {
                             price: item.price,
                           ),
                         );
-                        scaffoldMessengerKey.currentState?.showSnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(
-                              'Product added to cart successfully!',
+                              "Product added to cart successfully!",
                             ),
                             backgroundColor: Colors.green,
                             duration: Duration(seconds: 2),
